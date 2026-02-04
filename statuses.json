@@ -1,0 +1,93 @@
+[
+  {
+    "Id": 1,
+    "State": "Started",
+    "Status": null,
+    "Name": null,
+    "ActorRole": "Salesperson"
+  },
+  {
+    "Id": 101,
+    "State": "Returned",
+    "Status": "ReturnedByCoordinatorForSalespersonReview",
+    "Name": "ReturnedByCoordinatorForSalespersonReview",
+    "ActorRole": "Salesperson"
+  },
+  {
+    "Id": 100,
+    "State": "InProgress",
+    "Status": "Drafted",
+    "Name": "Drafted",
+    "ActorRole": "Salesperson"
+  },
+  {
+    "Id": 200,
+    "State": "InProgress",
+    "Status": "SubmittedBySalesAndPendingEngineeringAssignment",
+    "Name": "SubmittedBySalesAndPendingEngineeringAssignment",
+    "ActorRole": "EngineeringCoordinator"
+  },
+  {
+    "Id": 201,
+    "State": "Returned",
+    "Status": "ReturnedByEngineerToCoordinatorForReassign",
+    "Name": "ReturnedByEngineerToCoordinatorForReassign",
+    "ActorRole": "EngineeringCoordinator"
+  },
+  {
+    "Id": 300,
+    "State": "InProgress",
+    "Status": "AssignedToEngineerByCoordinator",
+    "Name": "AssignedToEngineerByCoordinator",
+    "ActorRole": "Engineer"
+  },
+  {
+    "Id": 400,
+    "State": "InProgress",
+    "Status": "AcceptedAssignmentByEngineer",
+    "Name": "AcceptedAssignmentByEngineer",
+    "ActorRole": "Engineer"
+  },
+  {
+    "Id": 500,
+    "State": "InProgress",
+    "Status": "SubmittedByEngineerForReview",
+    "Name": "SubmittedByEngineerForReview",
+    "ActorRole": "EngineeringReviewer"
+  },
+  {
+    "Id": 601,
+    "State": "Returned",
+    "Status": "ReturnedBySalesToEngineeringReviewer",
+    "Name": "ReturnedBySalesToEngineeringReviewer",
+    "ActorRole": "EngineeringReviewer"
+  },
+  {
+    "Id": 600,
+    "State": "InProgress",
+    "Status": "ApprovedByEngineeringReviewer",
+    "Name": "ApprovedByEngineeringReviewer",
+    "ActorRole": "Salesperson"
+  },
+  {
+    "Id": 700,
+    "State": "InProgress",
+    "Status": "QuotationInProgress",
+    "Name": "QuotationInProgress",
+    "ActorRole": "Salesperson"
+  },
+  {
+    "Id": 801,
+    "State": "Completed",
+    "Status": "Lost",
+    "Name": "Lost",
+    "ActorRole": "Salesperson"
+  },
+  {
+    "Id": 800,
+    "State": "Completed",
+    "Status": "Awarded",
+    "Name": "Awarded",
+    "ActorRole": "Salesperson"
+  }
+]

@@ -1,0 +1,172 @@
+﻿@page
+@model WebApplication3.Pages.OfferRequests.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <div class="d-flex justify-content-between">
+        <h4>OfferRequest</h4>
+        <div>
+            <p class="m-0 text-success"> Current State: @Model.CurrentState.StatusName </p>
+            <p class="m-0 text-success"> Current User: @Model.CurrentState.ActorRole </p>
+        </div>
+    </div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfferRequest.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfferRequest.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.OfferRequest.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+
+    <br />
+
+
+    <div class="d-flex justify-content-around">
+        @foreach (var item in Model.CurrentState.Transitions ?? [])
+        {
+
+            <form method="post">
+                <input type="hidden" asp-for="Input.Id" value="@item.Id" />
+                <input type="hidden" asp-for="Input.Status" value="@item.ToStatusId" />
+                <input type="hidden" asp-for="Input.ActionTaken" value="@item.Action" />
+                <input type="hidden" asp-for="Input.RequestId" value="@Model.OfferRequest.Id" />
+                <input type="hidden" asp-for="Input.CreatedBy" value="@Model.CurrentState.ActorRole" />
+
+                @if (item.Precondition != null)
+                {
+                    <button class="btn btn-primary" type="button" onclick="openConfirmationModal('@item.Precondition.CommentRequired', '@item.Precondition.DataRequired', '@item.Precondition.AssignmentRequired')">@item.Action.ToString()</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary" type="submit">@item.Action.ToString()</button>
+                }
+            </form>
+        }
+    </div>
+
+</div>
+
+
+<div class="pt-4 mt-4">
+    <h4>Workflow Steps</h4>
+    <div class="d-flex flex-column">
+        <!-- foreach starts here  -->
+        @foreach (var item in Model.HappyScenarios)
+        {
+            <div class="d-flex align-items-start gap-2">
+                <!-- LEFT: Circle + line -->
+                <div class="d-flex flex-column align-items-center">
+                    <!-- Circle -->
+                    <div class="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style="width: 14px; height: 14px">
+                    </div>
+                    <div class="flex-grow-1 border-start mt-1" style="height: 24px"></div>
+                </div>
+                <!-- RIGHT: Label -->
+                <div class="text-success fw-semibold">@item.FromStatus.StatusName</div>
+            </div>
+        }
+    </div>
+
+
+
+
+</div>
+
+
+<div class="pt-4 mt-4">
+    <h3>History</h3>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>PreviousState</th>
+                <th>ActionTaken</th>
+                <th>NewState</th>
+                <th>ChangedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OfferRequest.OfferRequestHistories)
+            {
+                <tr>
+                    <td>@item.PreviousStatus</td>
+                    <td>@item.ActionTaken</td>
+                    <td>@item.NewStatus</td>
+                    <td>@item.CreationTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="modal" tabindex="-1" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="precondition"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(() => {
+
+        });
+
+
+        const openConfirmationModal = (commentRequired, dataRequired, assignmentRequired) => {
+            const modalElement = document.getElementById('myModal');
+            const modal = new bootstrap.Modal(modalElement);
+
+            const precondition = document.getElementById('precondition');
+            if (commentRequired === 'True') {
+                precondition.innerText = 'Comment required';
+            }
+            if (dataRequired === 'True') {
+                precondition.innerText = 'Data required';
+            }
+            if(assignmentRequired === 'True') {
+                precondition.innerText = 'Assignment required';
+            }
+
+            modal.show();
+        }
+
+
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,353 @@
+{
+  "WorkflowStatuses": [
+    {
+      "Id": 1,
+      "State": "Started",
+      "Status": null,
+      "Name": null,
+      "ActorRole": "Salesperson",
+      "Transitions": [
+        {
+          "Id": 100,
+          "Status": "Drafted",
+          "Name": "Drafted",
+          "Action": {
+            "Id": 1,
+            "Name": "CreateRequest",
+            "Action": "CreateRequest"
+          },
+          "Precondition": null
+        }
+      ]
+    },
+    {
+      "Id": 101,
+      "State": "Returned",
+      "Status": "ReturnedByCoordinatorForSalespersonReview",
+      "Name": "ReturnedByCoordinatorForSalespersonReview",
+      "ActorRole": "Salesperson",
+      "Transitions": [
+        {
+          "Id": 200,
+          "Status": "SubmittedBySalesAndPendingEngineeringAssignment",
+          "Name": "SubmittedBySalesAndPendingEngineeringAssignment",
+          "Action": {
+            "Id": 2,
+            "Name": "SubmitToEngineering",
+            "Action": "SubmitToEngineering"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": 100,
+      "State": "InProgress",
+      "Status": "Drafted",
+      "Name": "Drafted",
+      "ActorRole": "Salesperson",
+      "Transitions": [
+        {
+          "Id": 200,
+          "Status": "SubmittedBySalesAndPendingEngineeringAssignment",
+          "Name": "SubmittedBySalesAndPendingEngineeringAssignment",
+          "Action": {
+            "Id": 1,
+            "Name": "SubmitToEngineering",
+            "Action": "SubmitToEngineering"
+          },
+          "Precondition": null
+        }
+      ]
+    },
+    {
+      "Id": 200,
+      "State": "InProgress",
+      "Status": "SubmittedBySalesAndPendingEngineeringAssignment",
+      "Name": "SubmittedBySalesAndPendingEngineeringAssignment",
+      "ActorRole": "EngineeringCoordinator",
+      "Transitions": [
+        {
+          "Id": 300,
+          "Status": "AssignedToEngineerByCoordinator",
+          "Name": "AssignedToEngineerByCoordinator",
+          "Action": {
+            "Id": 2,
+            "Name": "AssignToEngineer",
+            "Action": "AssignToEngineer"
+          },
+          "Precondition": {
+            "CommentRequired": false,
+            "DataRequired": false,
+            "AssignmentRequired": true
+          }
+        },
+        {
+          "Id": 101,
+          "Status": "ReturnedByCoordinatorForSalespersonReview",
+          "Name": "ReturnedByCoordinatorForSalespersonReview",
+          "Action": {
+            "Id": 2,
+            "Name": "ReturnToSales",
+            "Action": "ReturnToSales"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": 201,
+      "State": "Returned",
+      "Status": "ReturnedByEngineerToCoordinatorForReassign",
+      "Name": "ReturnedByEngineerToCoordinatorForReassign",
+      "ActorRole": "EngineeringCoordinator",
+      "Transitions": [
+        {
+          "Id": 203,
+          "Status": "ReturnedByCoordinatorForSalespersonReview",
+          "Name": "ReturnedByCoordinatorForSalespersonReview",
+          "Action": {
+            "Id": 2,
+            "Name": "ReturnToSales",
+            "Action": "ReturnToSales"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        },
+        {
+          "Id": 300,
+          "Status": "AssignedToEngineerByCoordinator",
+          "Name": "AssignedToEngineerByCoordinator",
+          "Action": {
+            "Id": 2,
+            "Name": "AssignToEngineer",
+            "Action": "AssignToEngineer"
+          },
+          "Precondition": {
+            "CommentRequired": false,
+            "DataRequired": false,
+            "AssignmentRequired": true
+          }
+        }
+      ]
+    },
+    {
+      "Id": 300,
+      "State": "InProgress",
+      "Status": "AssignedToEngineerByCoordinator",
+      "Name": "AssignedToEngineerByCoordinator",
+      "ActorRole": "Engineer",
+      "Transitions": [
+        {
+          "Id": 400,
+          "Status": "AcceptedAssignmentByEngineer",
+          "Name": "AcceptedAssignmentByEngineer",
+          "Action": {
+            "Id": 2,
+            "Name": "Accept",
+            "Action": "Accept"
+          },
+          "Precondition": null
+        },
+        {
+          "Id": 201,
+          "Status": "ReturnedByEngineerToCoordinatorForReassign",
+          "Name": "ReturnedByEngineerToCoordinatorForReassign",
+          "Action": {
+            "Id": 2,
+            "Name": "ReturnToEngCoordinator",
+            "Action": "ReturnToEngCoordinator"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": 400,
+      "State": "InProgress",
+      "Status": "AcceptedAssignmentByEngineer",
+      "Name": "AcceptedAssignmentByEngineer",
+      "ActorRole": "Engineer",
+      "Transitions": [
+        {
+          "Id": 303,
+          "Status": "SubmittedByEngineerForReview",
+          "Name": "SubmittedByEngineerForReview",
+          "Action": {
+            "Id": 2,
+            "Name": "SubmitForReview",
+            "Action": "SubmitForReview"
+          },
+          "Precondition": null
+        }
+      ]
+    },
+    {
+      "Id": 400,
+      "State": "InProgress",
+      "Status": "SubmittedByEngineerForReview",
+      "Name": "SubmittedByEngineerForReview",
+      "ActorRole": "EngineeringReviewer",
+      "Transitions": [
+        {
+          "Id": 401,
+          "Status": "ApprovedByEngineeringReviewer",
+          "Name": "ApprovedByEngineeringReviewer",
+          "Action": {
+            "Id": 2,
+            "Name": "Approve",
+            "Action": "Approve"
+          },
+          "Precondition": null
+        },
+        {
+          "Id": 402,
+          "Status": "AssignedToEngineerByCoordinator",
+          "Name": "AssignedToEngineerByCoordinator",
+          "Action": {
+            "Id": 2,
+            "Name": "Return",
+            "Action": "Return"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": 403,
+      "State": "Returned",
+      "Status": "ReturnedBySalesToEngineeringReviewer",
+      "Name": "ReturnedBySalesToEngineeringReviewer",
+      "ActorRole": "EngineeringReviewer",
+      "Transitions": [
+        {
+          "Id": 500,
+          "Status": "ApprovedByEngineeringReviewer",
+          "Name": "ApprovedByEngineeringReviewer",
+          "Action": {
+            "Id": 2,
+            "Name": "Approve",
+            "Action": "Approve"
+          },
+          "Precondition": null
+        },
+        {
+          "Id": 501,
+          "Status": "AssignedToEngineerByCoordinator",
+          "Name": "AssignedToEngineerByCoordinator",
+          "Action": {
+            "Id": 2,
+            "Name": "Return",
+            "Action": "Return"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": 600,
+      "State": "InProgress",
+      "Status": "ApprovedByEngineeringReviewer",
+      "Name": "ApprovedByEngineeringReviewer",
+      "ActorRole": "Salesperson",
+      "Transitions": [
+        {
+          "Id": 601,
+          "Status": "QuotationInProgress",
+          "Name": "QuotationInProgress",
+          "Action": {
+            "Id": 2,
+            "Name": "Accept",
+            "Action": "Accept"
+          },
+          "Precondition": null
+        },
+        {
+          "Id": 602,
+          "Status": "ReturnedBySalesToEngineeringReviewer",
+          "Name": "ReturnedBySalesToEngineeringReviewer",
+          "Action": {
+            "Id": 2,
+            "Name": "Return",
+            "Action": "Return"
+          },
+          "Precondition": {
+            "CommentRequired": true,
+            "DataRequired": false,
+            "AssignmentRequired": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": 700,
+      "State": "InProgress",
+      "Status": "QuotationInProgress",
+      "Name": "QuotationInProgress",
+      "ActorRole": "Salesperson",
+      "Transitions": [
+        {
+          "Id": 800,
+          "Status": "Awarded",
+          "Name": "Awarded",
+          "Action": {
+            "Id": 2,
+            "Name": "Awarded",
+            "Action": "Awarded"
+          },
+          "Precondition": null
+        },
+        {
+          "Id": 801,
+          "Status": "Lost",
+          "Name": "Lost",
+          "Action": {
+            "Id": 2,
+            "Name": "Lost",
+            "Action": "Lost"
+          },
+          "Precondition": null
+        }
+      ]
+    },
+    {
+      "Id": 801,
+      "State": "Completed",
+      "Status": "Lost",
+      "Name": "Lost",
+      "ActorRole": "Salesperson",
+      "Transitions": null
+    },
+    {
+      "Id": 800,
+      "State": "Completed",
+      "Status": "Awarded",
+      "Name": "Awarded",
+      "ActorRole": "Salesperson",
+      "Transitions": null
+    }
+  ]
+}
