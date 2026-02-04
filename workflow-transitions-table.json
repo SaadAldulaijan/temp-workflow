@@ -1,0 +1,149 @@
+[
+  {
+    "Id": "50",
+    "FromStatusId": "100",
+    "ToStatusId": "200",
+    "Action": "Submit",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "51",
+    "FromStatusId": "101",
+    "ToStatusId": "200",
+    "Action": "Submit",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "52",
+    "FromStatusId": "200",
+    "ToStatusId": "300",
+    "Action": "Assign",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "53",
+    "FromStatusId": "200",
+    "ToStatusId": "101",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "54",
+    "FromStatusId": "201",
+    "ToStatusId": "300",
+    "Action": "Assign",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "55",
+    "FromStatusId": "201",
+    "ToStatusId": "101",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "56",
+    "FromStatusId": "300",
+    "ToStatusId": "400",
+    "Action": "Accept",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "57",
+    "FromStatusId": "300",
+    "ToStatusId": "201",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "58",
+    "FromStatusId": "400",
+    "ToStatusId": "500",
+    "Action": "Submit",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "59",
+    "FromStatusId": "401",
+    "ToStatusId": "500",
+    "Action": "Submit",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "60",
+    "FromStatusId": "500",
+    "ToStatusId": "600",
+    "Action": "Approve",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "61",
+    "FromStatusId": "500",
+    "ToStatusId": "401",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "62",
+    "FromStatusId": "501",
+    "ToStatusId": "600",
+    "Action": "Approve",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "63",
+    "FromStatusId": "501",
+    "ToStatusId": "401",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "64",
+    "FromStatusId": "600",
+    "ToStatusId": "700",
+    "Action": "CreateQuotation",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "65",
+    "FromStatusId": "600",
+    "ToStatusId": "501",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "66",
+    "FromStatusId": "700",
+    "ToStatusId": "800",
+    "Action": "Awarded",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "67",
+    "FromStatusId": "700",
+    "ToStatusId": "801",
+    "Action": "Lost",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "68",
+    "FromStatusId": "401",
+    "ToStatusId": "201",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "69",
+    "FromStatusId": "700",
+    "ToStatusId": "502",
+    "Action": "Return",
+    "Precondition": "NULL"
+  },
+  {
+    "Id": "71",
+    "FromStatusId": "502",
+    "ToStatusId": "401",
+    "Action": "Return",
+    "Precondition": "NULL"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "Id": "100",
+    "StatusName": "Drafted",
+    "State": "InProgress",
+    "ActorRole": "salesperson"
+  },
+  {
+    "Id": "101",
+    "StatusName": "ReturnedByCoordinatorForSalespersonReview",
+    "State": "Returned",
+    "ActorRole": "salesperson"
+  },
+  {
+    "Id": "200",
+    "StatusName": "SubmittedBySalesAndPendingEngineeringAssignment",
+    "State": "InProgress",
+    "ActorRole": "engineering-coordinator"
+  },
+  {
+    "Id": "201",
+    "StatusName": "ReturnedByEngineerToCoordinatorForReassign",
+    "State": "Returned",
+    "ActorRole": "engineering-coordinator"
+  },
+  {
+    "Id": "300",
+    "StatusName": "AssignedToEngineerByCoordinator",
+    "State": "InProgress",
+    "ActorRole": "engineer"
+  },
+  {
+    "Id": "400",
+    "StatusName": "AcceptedAssignmentByEngineer",
+    "State": "InProgress",
+    "ActorRole": "engineer"
+  },
+  {
+    "Id": "500",
+    "StatusName": "SubmittedByEngineerForReview",
+    "State": "InProgress",
+    "ActorRole": "engineering-reivewer"
+  },
+  {
+    "Id": "600",
+    "StatusName": "ApprovedByEngineeringReviewer",
+    "State": "InProgress",
+    "ActorRole": "salesperson"
+  },
+  {
+    "Id": "700",
+    "StatusName": "QuotationInProgress",
+    "State": "InProgress",
+    "ActorRole": "salesperson"
+  },
+  {
+    "Id": "800",
+    "StatusName": "Awarded",
+    "State": "Completed",
+    "ActorRole": "salesperson"
+  },
+  {
+    "Id": "801",
+    "StatusName": "Lost",
+    "State": "Completed",
+    "ActorRole": "salesperson"
+  },
+  {
+    "Id": "501",
+    "StatusName": "ReturnedBySalesToEngineeringReviewer",
+    "State": "Returned",
+    "ActorRole": "engineering-reivewer"
+  },
+  {
+    "Id": "401",
+    "StatusName": "ReturnedByReviewerToEngineer",
+    "State": "Returned",
+    "ActorRole": "engineer"
+  },
+  {
+    "Id": "502",
+    "StatusName": "ReturnedBySalesForEngineeringRework",
+    "State": "Returned",
+    "ActorRole": "engineering-reivewer"
+  }
+]
